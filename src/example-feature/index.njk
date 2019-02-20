@@ -1,8 +1,13 @@
-{#{% extends "pattern-library-v2/0.1.5/src/views/layouts/_master.njk" %}#}
 {% extends "./layout/_eq-page.njk" %}
 
+{##
+ # Pattern library imports and aliases
+ #}
+{% macro panelV15(params) %}{% include 'pattern-library-v2/0.1.5/src/components/panel/_template.njk' %}{% endmacro %}
+{% macro panelLatest(params) %}{% include 'pattern-library-v2/latest/src/components/panel/_template.njk' %}{% endmacro %}
+{% macro button(params) %}{% include 'pattern-library-v2/0.1.5/src/components/button/_template.njk' %}{% endmacro %}
+
 {% from "./components/grid/grid.njk" import grid, grid__col %}
-{% from "components/panel/_macro.njk" import onsPanel %}
 
 {% block page__subheader %}
     <div class="container">
@@ -28,50 +33,58 @@
 
                         <div class="question u-mb-s">
                             <h1 id="question-title" class="question__title u-fs-l" data-qa="question-title">Beth yw enw'r  ymwelydd sy'n aros dros nos ar 3 Chwefror 2019 yn 123,  ddger?</h1>
+
+                            {% call panelV15({ classes: 'u-mb-m' }) %}
+                                <strong class="u-mb-xs u-d-b">Dylech gynnwys</strong>
+                                <ul class="js-visitor-includes">
+                                    <li class="list__item">Pobl sy’n byw y tu allan i’r Deyrnas Unedig fel arfer, ond sy’n aros yn y Deyrnas Unedig am lai na dri mis</li>
+                                    <li class="list__item">Pobl sydd ar wyliau yma Neu</li>
+                                </ul>
+                            {%- endcall %}
+
+                            {% call panelLatest({ classes: 'u-mb-m' }) %}
+                                <strong class="u-mb-xs u-d-b">Dylech gynnwys</strong>
+                                <ul class="js-visitor-includes">
+                                    <li class="list__item">Pobl sy’n byw y tu allan i’r Deyrnas Unedig fel arfer, ond sy’n aros yn y Deyrnas Unedig am lai na dri mis</li>
+                                    <li class="list__item">Pobl sydd ar wyliau yma Neu</li>
+                                </ul>
+                            {%- endcall %}
+
+                            <div id="member-list"></div>
+
+                            <fieldset class="question__fieldset js-question-fieldset u-mb-s">
+                                <legend class="u-vh">What is your name?</legend>
+
+                                <div class="question__answers">
+                                    <div class="question__answer">
+                                        <label class="label" for="first-name">
+                                            <div class="label__inner">
+                                                Enw cyntaf
+                                            </div>
+                                        </label>
+                                        <input class="input input--text " id="first-name" data-qa="input-text" value="">
+                                    </div>
+
+                                    <div class="question__answer">
+                                        <label class="label ">
+                                            <div class="label__inner">
+                                                Enw(au) canol
+                                            </div>
+                                        </label>
+                                        <input class="input input--text " id="middle-name" data-qa="input-text" value="">
+                                    </div>
+
+                                    <div class="question__answer">
+                                        <label class="label ">
+                                            <div class="label__inner">
+                                                Cyfenw
+                                            </div>
+                                        </label>
+                                        <input class="input input--text " id="last-name" data-qa="input-text" value="">
+                                    </div>
+                                </div>
+                            </fieldset>
                         </div>
-
-                        {% call onsPanel({ classes: 'u-mb-m' }) %}
-                            <strong class="u-mb-xs u-d-b">Dylech gynnwys</strong>
-                            <ul class="js-visitor-includes">
-                                <li class="list__item">Pobl sy’n byw y tu allan i’r Deyrnas Unedig fel arfer, ond sy’n aros yn y Deyrnas Unedig am lai na dri mis</li>
-                                <li class="list__item">Pobl sydd ar wyliau yma Neu</li>
-                            </ul>
-                        {%- endcall %}
-
-                        <div id="member-list"></div>
-
-                        <fieldset class="question__fieldset js-question-fieldset u-mb-s">
-                            <legend class="u-vh">What is your name?</legend>
-
-                            <div class="question__answers">
-                                <div class="question__answer">
-                                    <label class="label" for="first-name">
-                                        <div class="label__inner">
-                                            Enw cyntaf
-                                        </div>
-                                    </label>
-                                    <input class="input input--text " id="first-name" data-qa="input-text" value="">
-                                </div>
-
-                                <div class="question__answer">
-                                    <label class="label ">
-                                        <div class="label__inner">
-                                            Enw(au) canol
-                                        </div>
-                                    </label>
-                                    <input class="input input--text " id="middle-name" data-qa="input-text" value="">
-                                </div>
-
-                                <div class="question__answer">
-                                    <label class="label ">
-                                        <div class="label__inner">
-                                            Cyfenw
-                                        </div>
-                                    </label>
-                                    <input class="input input--text " id="last-name" data-qa="input-text" value="">
-                                </div>
-                            </div>
-                        </fieldset>
                     </div>
                 </div>
 
@@ -84,9 +97,14 @@
                     <button class="btn btn--secondary btn--small js-remove-person">Remove this person</button>
                 </div>
 
-                <button class="btn btn-submit btn--primary btn--lg u-mt-xl" data-qa="btn-submit" type="submit" name="action[save_continue]">
-                    Cadw a pharhau
-                </button>
+                <div class="u-mt-xl">
+                    {{ button({
+                        "type": 'button',
+                        "element": 'button',
+                        "text": 'Cadw a pharhau',
+                        "name": 'action[save_continue]'
+                    }) }}
+                </div>
             </main>
         {%- endcall %}
     {%- endcall %}

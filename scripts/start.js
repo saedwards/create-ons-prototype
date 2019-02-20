@@ -9,8 +9,7 @@ function boot() {
 
   const nunjucksEnv = nunjucks.configure([
     './src',
-    //'./node_modules/@ons/pattern-library-v2/0.1.5/src/',
-    './node_modules/@ons/pattern-library-v2/0.1.5/src/',
+    './node_modules/@ons'
   ], {
     cache: false,
     express: app,
