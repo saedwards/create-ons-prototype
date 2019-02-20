@@ -1,0 +1,5 @@
+{% macro footer(modifiers = []) %}
+<footer class="footer {% for i in modifiers | list %}{{ i }} {% endfor %}" role="contentinfo">
+    {{ caller() }}
+</footer>
+{% endmacro %}

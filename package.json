@@ -1,0 +1,32 @@
+{
+  "name": "sdc-prototypes",
+  "version": "0.0.0",
+  "description": "Prototyping for ONS survey data collection",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node scripts/start.js"
+  },
+  "author": {
+    "email": "shane.edwards9@gmail.com",
+    "name": "Shane Edwards",
+    "url": "https://github.com/saedwards"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@ons/pattern-library-v2/0.1.5": "git+https://github.com/ONSdigital/pattern-library-v2.git#0.1.5",
+    "@ons/pattern-library-v2/latest": "git+https://github.com/ONSdigital/pattern-library-v2.git",
+    "@ons/sdc-global-design-patterns/latest": "git+https://github.com/ONSdigital/sdc-global-design-patterns.git",
+    "@ons/sdc-global-design-patterns/v1.0.0": "git+https://github.com/ONSdigital/sdc-global-design-patterns.git#v1.0.0",
+    "@ons/sdc-global-design-patterns/v1.5.0": "git+https://github.com/ONSdigital/sdc-global-design-patterns.git#v1.5.0",
+    "@ons/sdc-global-design-patterns/v2.0.0": "git+https://github.com/ONSdigital/sdc-global-design-patterns.git#v2.0.0",
+    "chokidar": "^2.1.1",
+    "express": "^4.16.4",
+    "rxjs": "^6.4.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1"
+  }
+}

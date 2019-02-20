@@ -1,0 +1,39 @@
+{% extends "./_master.njk" %}
+
+{% from "../components/page/page.njk" import
+    page,
+    page__content,
+    page__container,
+    page__header,
+    page__subheader,
+    page__footer %}
+
+{% block master_body %}
+    {% call page() %}
+        {% call page__content() %}
+            <div class="skip">
+                <a class="skip__link" href="#main">Skip to content</a>
+            </div>
+
+            {% call page__header() %}
+                {% block page__header %}
+                    {% include "../includes/header/header-standard.njk" %}
+                {% endblock %}
+            {%- endcall %}
+
+            {% call page__subheader() %}
+                {% block page__subheader %}{% endblock %}
+            {%- endcall %}
+
+            {% call page__container() %}
+                {% block page__container %}{% endblock %}
+            {%- endcall %}
+
+            {% call page__footer() %}
+                {% block pageFooter %}
+                    {% include "../includes/footer/footer-standard.njk" %}
+                {% endblock %}
+            {%- endcall %}
+        {%- endcall %}
+    {%- endcall %}
+{% endblock %}

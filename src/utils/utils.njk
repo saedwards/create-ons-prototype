@@ -1,0 +1,5 @@
+{% macro renderClassesIfMatched(classes, matchAgainst) %}
+    {% for class in classes | list %}
+        {% if class in matchAgainst %}{{ class }}{% endif %}
+    {% endfor %}
+{% endmacro %}

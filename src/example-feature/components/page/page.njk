@@ -1,0 +1,38 @@
+{% macro page(modifiers = []) %}
+<div class="page">
+    {{ caller() }}
+</div>
+{% endmacro %}
+
+
+{% macro page__content(modifiers = []) %}
+<div class="page__content">
+    {{ caller() }}
+</div>
+{% endmacro %}
+
+
+{% macro page__container(modifiers = []) %}
+<div class="page__container container">
+    {{ caller() }}
+</div>
+{% endmacro %}
+
+
+{% macro page__header(modifiers = []) %}
+<div class="page__header">
+    {{ caller() }}
+</div>
+{% endmacro %}
+
+{% macro page__subheader(modifiers = []) %}
+    <div class="page__subheader">
+        {{ caller() }}
+    </div>
+{% endmacro %}
+
+{% macro page__footer(modifiers = []) %}
+<div class="page__footer">
+    {{ caller() }}
+</div>
+{% endmacro %}

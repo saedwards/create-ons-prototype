@@ -1,0 +1,32 @@
+{% set featureRoot = '/example-feature/' %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en-gb" dir="ltr" class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en-gb" dir="ltr" class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en-gb" dir="ltr" class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html lang="en-gb" dir="ltr" class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en-gb" dir="ltr" class="no-js"> <!--<![endif]-->
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.0/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    {{ pageInfo.title }}
+
+    <link rel="icon" type="image/x-icon" href="{{ featureRoot }}assets/favicon.ico">
+
+    <!--[if (gt IE 9) | (IEMobile)]><!-->
+    <link rel="stylesheet"
+          href="https://cdn.ons.gov.uk/sdc/v2.0.0/css/responsive.css" />
+    <!--<![endif]-->
+
+    <!--[if (lte IE 9) & (!IEMobile)]>
+    <link rel="stylesheet"
+          href="https://cdn.ons.gov.uk/sdc/v2.0.0/css/fixed.css" />
+    <![endif]-->
+
+    <link rel="stylesheet" href="{{ featureRoot }}assets/style.css" />
+</head>
+<body>
+    {% block master_body %}{% endblock %}
+
+    <script src="https://cdn.ons.gov.uk/sdc/v2.0.0/scripts/bundle.js"></script>
+</body>
+</html>

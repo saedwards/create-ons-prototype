@@ -1,0 +1,14 @@
+{% from "../../../utils/utils.njk" import renderClassesIfMatched %}
+
+{% macro header(modifiers = []) %}
+    {% set gridModifiers = [
+        'header--internal',
+        'header--hero',
+        'header--thin'
+    ] %}
+
+    <header class="header
+        {% call renderClassesIfMatched(modifiers, gridModifiers) %}{%- endcall %}">
+        {{ caller() }}
+    </header>
+{% endmacro %}
