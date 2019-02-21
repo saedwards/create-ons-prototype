@@ -1,5 +1,7 @@
 import nunjucks from 'nunjucks';
 import express from 'express';
+import browserSync from 'browser-sync';
+import connectBrowserSync from 'connect-browser-sync';
 
 const app = express();
 const PORT = 5088;
@@ -16,6 +18,12 @@ function boot() {
     watch: true
   });
 
+  const bs = browserSync.create().init({
+    files: ['src/**/*.*'],
+    logSnippet: false
+  });
+
+  app.use(connectBrowserSync(bs));
   app.engine( 'njk', nunjucksEnv.render );
 
   app.get('(/*)?', function(req, res) {
