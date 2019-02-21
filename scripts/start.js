@@ -4,7 +4,7 @@ import browserSync from 'browser-sync';
 import connectBrowserSync from 'connect-browser-sync';
 
 const app = express();
-const PORT = 5088;
+const PORT = 5090;
 
 function boot() {
   nunjucks.installJinjaCompat();
@@ -28,9 +28,10 @@ function boot() {
 
   app.get('(/*)?', function(req, res) {
     const route = req.params[1],
-      isAssets = route.match(/assets/g);
+      isAssets = route.match(/assets/g),
+      isCssFile = route.match(/.css?/);
 
-    !isAssets
+    !isAssets && !isCssFile
       ? res.render(route + '.njk')
       : res.sendFile(route, { root: './src/' });
   });

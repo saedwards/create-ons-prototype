@@ -8,7 +8,7 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.0/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    {{ pageInfo.title }}
+    <title>ONS Prototype</title>
 
     <link rel="icon" type="image/x-icon" href="{{ featureRoot }}assets/favicon.ico">
 
@@ -22,7 +22,8 @@
           href="https://cdn.ons.gov.uk/sdc/v2.0.0/css/fixed.css" />
     <![endif]-->
 
-    <link rel="stylesheet" href="{{ featureRoot }}assets/style.css" />
+    {#<link rel="stylesheet" href="{{ featureRoot }}assets/style.css" />#}
+    <link rel="stylesheet" href="{{ featureRoot }}override.css" />
 </head>
 <body>
     {% block master_body %}{% endblock %}
