@@ -3,25 +3,26 @@ import express from 'express';
 import browserSync from 'browser-sync';
 import connectBrowserSync from 'connect-browser-sync';
 
-const app = express();
 const PORT = 5090;
 
-function boot() {
+export default function expressNunjucks(port) {
   nunjucks.installJinjaCompat();
 
-  const nunjucksEnv = nunjucks.configure([
-    './src',
-    './node_modules/@ons'
-  ], {
-    cache: false,
-    express: app,
-    watch: true
-  });
+  const app = express(),
 
-  const bs = browserSync.create().init({
-    files: ['src/**/*.*'],
-    logSnippet: false
-  });
+    nunjucksEnv = nunjucks.configure([
+      './src',
+      './node_modules/@ons'
+    ], {
+      cache: false,
+      express: app,
+      watch: true
+    }),
+
+    bs = browserSync.create().init({
+      files: ['src/**/*.*'],
+      logSnippet: false
+    });
 
   app.use(connectBrowserSync(bs));
   app.engine( 'njk', nunjucksEnv.render );
@@ -36,8 +37,8 @@ function boot() {
       : res.sendFile(route, { root: './src/' });
   });
 
-  app.listen(PORT);
-  console.log(`Running on port ${PORT}`);
+  app.listen(port);
+  console.log(`Running on port ${port}`);
 }
 
-boot();
+expressNunjucks(PORT);

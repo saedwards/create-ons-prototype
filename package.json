@@ -4,8 +4,8 @@
   "description": "Prototyping for ONS survey data collection",
   "main": "index.js",
   "scripts": {
-    "start": "yarn sass-watch | yarn server-templates",
-    "server-templates": "babel-node scripts/start.js",
+    "start": "yarn sass-watch | yarn serve-templates",
+    "serve-templates": "babel-node scripts/express-nunjucks-browsersync.js",
     "sass-build": "node-sass src -o src",
     "sass-watch": "node-sass --watch src -o src"
   },
@@ -24,8 +24,7 @@
     "@ons/sdc-global-design-patterns/v2.0.0": "git+https://github.com/ONSdigital/sdc-global-design-patterns.git#v2.0.0",
     "chokidar": "^2.1.1",
     "express": "^4.16.4",
-    "nunjucks": "^3.1.7",
-    "rxjs": "^6.4.0"
+    "nunjucks": "^3.1.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
