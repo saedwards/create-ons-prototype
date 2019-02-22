@@ -7,7 +7,8 @@
     "start": "yarn sass-watch | yarn serve-templates",
     "serve-templates": "babel-node scripts/express-nunjucks-browsersync.js",
     "sass-build": "node-sass src -o src",
-    "sass-watch": "node-sass --watch src -o src"
+    "sass-watch": "node-sass --watch src -o src",
+    "start-parcel": "parcel -p 5091 src/**/*.html"
   },
   "author": {
     "email": "shane.edwards9@gmail.com",
@@ -24,7 +25,8 @@
     "@ons/sdc-global-design-patterns/v2.0.0": "git+https://github.com/ONSdigital/sdc-global-design-patterns.git#v2.0.0",
     "chokidar": "^2.1.1",
     "express": "^4.16.4",
-    "nunjucks": "^3.1.7"
+    "nunjucks": "^3.1.7",
+    "parcel-bundler": "^1.11.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
