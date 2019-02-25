@@ -10,6 +10,11 @@
 
 {% from "./components/grid/grid.njk" import grid, grid__col %}
 
+{% block page__header %}
+    {{ super() }}
+    <script src="test.js"></script>
+{% endblock %}
+
 {% block page__subheader %}
     <div class="container">
         <a href="/">Previous</a>

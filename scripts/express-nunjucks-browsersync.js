@@ -2,8 +2,10 @@ import nunjucks from 'nunjucks';
 import express from 'express';
 import browserSync from 'browser-sync';
 import connectBrowserSync from 'connect-browser-sync';
+import { rollup } from 'rollup';
 
 const PORT = 5090;
+const root = './src/';
 
 export default function expressNunjucks(port) {
   nunjucks.installJinjaCompat();
@@ -11,7 +13,7 @@ export default function expressNunjucks(port) {
   const app = express(),
 
     nunjucksEnv = nunjucks.configure([
-      './src',
+      root,
       './node_modules/@ons'
     ], {
       cache: false,
@@ -20,22 +22,22 @@ export default function expressNunjucks(port) {
     }),
 
     bs = browserSync.create().init({
-      files: ['src/**/*.*'],
+      files: [root + '**/*.*'],
       logSnippet: false
     });
 
   app.use(connectBrowserSync(bs));
   app.engine( 'njk', nunjucksEnv.render );
 
-  app.get('(/*)?', function(req, res) {
-    const route = req.params[1],
-      isAssets = route.match(/assets/g),
-      isCssFile = route.match(/.css?/);
+  app.get('(/*.html$)?', (req, res) => res.render(req.params[1] + '.njk'));
 
-    !isAssets && !isCssFile
-      ? res.render(route + '.njk')
-      : res.sendFile(route, { root: './src/' });
-  });
+  app.get('(/*.js$)?', async (req, res) =>
+    rollup({input: root + req.params[0]})
+      .then(bundle => bundle.generate({ format: 'cjs' }))
+      .then(({ output = [] }) => res.send(output.map(chunk => chunk.code).join('')))
+  );
+
+  app.get('(/*)?', (req, res) => res.sendFile(req.params[1], { root: root }));
 
   app.listen(port);
   console.log(`Running on port ${port}`);
